@@ -9,7 +9,7 @@ export const placeOrder = async (req, res) => {
     // Get user's cart with product details
     const cart = await Cart.findOne({ userId }).populate({
       path: "items.productId",
-      select: "name price quantity" // فقط الحاجات المهمة للمخزون والحساب
+      select: "name price quantity" 
     });
 
     if (!cart || cart.items.length === 0) {
@@ -49,9 +49,9 @@ export const placeOrder = async (req, res) => {
         }
 
         // Deduct stock
-        const product = await productModel.findById(item.productId._id);
-        product.quantity -= item.quantity;
-        await product.save();
+        // const product = await productModel.findById(item.productId._id);
+        // product.quantity -= item.quantity;
+        // await product.save();
       }
 
       // Recalculate total price

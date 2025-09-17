@@ -13,10 +13,10 @@ const addToCart = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "productId and quantity are required" });
   }
 
-  // Validate productId
-  if (!mongoose.Types.ObjectId.isValid(productId)) {
-    return res.status(400).json({ message: "Invalid productId" });
-  }
+  // // Validate productId
+  // if (!mongoose.Types.ObjectId.isValid(productId)) {
+  //   return res.status(400).json({ message: "Invalid productId" });
+  // }
 
   // Check if product exists in DB
   const product = await productModel.findById(productId);
@@ -60,10 +60,10 @@ const removeFromCart = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "productId is required" });
   }
 
-  // Validate productId
-  if (!mongoose.Types.ObjectId.isValid(productId)) {
-    return res.status(400).json({ message: "Invalid productId" });
-  }
+  // // Validate productId
+  // if (!mongoose.Types.ObjectId.isValid(productId)) {
+  //   return res.status(400).json({ message: "Invalid productId" });
+  // }
 
   let cart = await cartModel.findOne({ userId });
   if (!cart) return res.status(404).json({ message: "Cart not found" });
